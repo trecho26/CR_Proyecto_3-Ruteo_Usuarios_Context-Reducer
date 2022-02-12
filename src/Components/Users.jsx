@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import AppContext from "../AppContext";
 
 const Users = () => {
   const initialValues = {
@@ -9,6 +10,7 @@ const Users = () => {
   };
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState(initialValues);
+  const { setTotalUsers } = useContext(AppContext);
 
   const handleChange = (event) => {
     let inputName = event.target.name;
@@ -37,6 +39,9 @@ const Users = () => {
 
     // Agregar usuario al estado
     setUsers([...users, user]);
+
+    // Sumar total al contexto
+    setTotalUsers(users.length + 1);
 
     // Transformar array a string
     const arrStr = JSON.stringify([...users, user]);

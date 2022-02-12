@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import AppContext from "../AppContext";
 
 const Sidebar = () => {
+  const { counter } = useContext(AppContext);
   return (
     <div className="bg-red-500 p-4 w-[250px]">
       <ul>
@@ -10,11 +12,14 @@ const Sidebar = () => {
             Usuarios
           </li>
         </NavLink>
-        <NavLink to="/products">
+        <NavLink to="/contador">
           <li className="p-2 rounded text-white hover:bg-red-700 transition-all">
-            Productos
+            Contador
           </li>
         </NavLink>
+        <li className="p-2 rounded text-white hover:bg-red-700 transition-all">
+          Contador: {counter}
+        </li>
       </ul>
     </div>
   );
